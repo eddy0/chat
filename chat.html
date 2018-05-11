@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/static/css/chat.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.0/socket.io.js"></script>
+
+    <title>chating room</title>
+</head>
+<body>
+
+
+<div class="main">
+    <div id="frame">
+        <div id="sidepanel" class="clearfix">
+            <div id="profile">
+                <div class="wrap">
+                    <img id="profile-img" src="/user/avatar/{{user.avatar}}" class="profile-avatar" alt="" />
+                    <p>{{user.nickname}}</p>
+                </div>
+            </div>
+
+
+
+            <div id="contacts">
+
+            </div>
+
+        </div>
+
+
+
+
+        <div class="content clearfix">
+
+
+
+
+            <div class="content-header">
+
+                <p>Chatting Room</p>
+                <span class="chat-count" style="margin-left:15px; font-size: 13px; color: #00a699 ">0 connection</span>
+            </div>
+
+
+
+
+            <div class="messages " >
+                <ul class="messages-list" data-id="{{user._id}}">
+                    <!--{% for chat in chats %}-->
+                    <!--<li class="time"> {{chat.date}}</li>-->
+                    <!--{% if chat.user._id === user._id %}-->
+                    <!--<li class="sent clearfix">-->
+                        <!--{% else %}-->
+                    <!--<li class="replies clearfix">-->
+                        <!--{% endif %}-->
+                        <!--<div class="feed">-->
+                            <!--<img src="/user/avatar/{{chat.user.avatar}}" alt="" />-->
+                            <!--<span> {{chat.user.nickname}} </span>-->
+                        <!--</div>-->
+                        <!--<p class="content-detail">{{chat.content}}</p>-->
+                    <!--</li>-->
+
+                    <!--{% endfor %}-->
+
+                </ul>
+            </div>
+
+
+            <div class="chat-input-wrapper">
+                <textarea placeholder="Type your message" class="input-chat-content"  rows="2"></textarea>
+                <span class="btn-chat-send">Send</span>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script src="static/lib/jquery-3.3.1.min.js"></script>
+<script src="static/js/wd.js"></script>
+<script src="static/js/ajax.js"></script>
+<script src="static/js/chat.js"></script>
+
+
+</body>
+</html>
