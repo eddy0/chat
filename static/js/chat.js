@@ -85,6 +85,21 @@ const appendTime = (time, wrapper) => {
     wrapper.append(t)
 }
 
+const appendMessage = (data) => {
+    let t
+    let wrapper = $('.messages-list')
+    let id = wrapper.attr('data-id')
+    let time = Number(data.date)
+    appendTime(time, wrapper)
+    // log(id, data, data.id)
+    if ( id !== data.id ) {
+        t = templateFriend(data)
+    } else {
+        t = templateSelf(data)
+    }
+    wrapper.append(t)
+}
+
 
 const socketEvent = (socket) => {
     // socket.on('new', function(data){
@@ -111,21 +126,16 @@ const socketEvent = (socket) => {
         list.dataset.id = id
     })
 
+    socket.on('history', (db) => {
+        db.forEach((data) => {
+            appendMessage(data)
+        })
+        $(".messages").animate({ scrollTop: $(this)[0].scrollHeight }, 'fast' )
+    })
+
 
     socket.on('chat', function(data){
-        let t
-        let wrapper = $('.messages-list')
-        let id = wrapper.attr('data-id')
-        let time = Number(data.date)
-        appendTime(time, wrapper)
-        log(id, data, data.id)
-        if ( id !== data.id ) {
-            t = templateFriend(data)
-        } else {
-            t = templateSelf(data)
-        }
-        wrapper.append(t)
-
+        appendMessage(data)
         setTimeout( () => {
             $(".messages").animate({ scrollTop: $('.messages')[0].scrollHeight }, "fast");
         }, 300)
@@ -133,7 +143,6 @@ const socketEvent = (socket) => {
 }
 
 const main = () => {
-    $(".messages").animate({ scrollTop: $(this)[0].scrollHeight }, 'fast' )
     let socket = io()
     messageEvent(socket)
     socketEvent(socket)

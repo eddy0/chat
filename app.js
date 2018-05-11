@@ -1,7 +1,7 @@
 const express = require('express')
 const sockiet = require('socket.io')
 const http = require('http')
-const log = console.log.bind(console)
+const { log } = require('./utils')
 
 const app = express()
 const httpServer = http.Server(app)

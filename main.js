@@ -17,7 +17,7 @@ function createWindow () {
     //     slashes: true
     // }))
 
-    win.loadURL('http://localhost:3000')
+    win.loadURL('http://localhost:7700')
 
     // 打开开发者工具。
     // win.webContents.openDevTools()

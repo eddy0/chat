@@ -6,6 +6,7 @@
   "dependencies": {
     "electron": "^2.0.0",
     "express": "^4.16.3",
+    "mongoose": "^5.1.0",
     "nodemon": "^1.17.4",
     "socket.io": "^2.1.0"
   },
