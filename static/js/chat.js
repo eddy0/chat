@@ -5,7 +5,8 @@ const post = (val, socket) => {
         id: id,
         date: Date.now(),
     }
-    socket.emit('message', form)
+    socket.emit('chat', form)
+
 }
 
 const messageEvent = (socket) => {
@@ -39,6 +40,9 @@ const messageEvent = (socket) => {
 const templateFriend = (data) => {
     let t = `
                     <li class="replies clearfix">
+                     <div class="feed">    
+                        <span> ${data.id} </span>
+                    </div>
                     <p class="content-detail">${data.content}</p>
                 </li>
 
@@ -50,6 +54,9 @@ const templateFriend = (data) => {
 const templateSelf = (data) => {
     let t = `
                 <li class="sent clearfix">
+                   <div class="feed">    
+                        <span> ${data.id} </span>
+                    </div>
                     <p class="content-detail">${data.content}</p>
                 </li>
             `
@@ -105,7 +112,7 @@ const socketEvent = (socket) => {
     })
 
 
-    socket.on('message', function(data){
+    socket.on('chat', function(data){
         let t
         let wrapper = $('.messages-list')
         let id = wrapper.attr('data-id')

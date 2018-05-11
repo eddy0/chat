@@ -1,5 +1,4 @@
 const express = require('express')
-// const bodyParser = require('body-parser')
 const sockiet = require('socket.io')
 const http = require('http')
 const log = console.log.bind(console)
@@ -12,12 +11,11 @@ const configIO = require('./io')
 const configApp = () => {
     app.use('/static', express.static('static'))
 
-    // app.use(bodyParser.urlencoded({
-    //     extended: true
-    // }))
-    // app.use(bodyParser.json())
-    //
     app.get('/', function(req, res){
+        res.sendFile(__dirname + '/chat.html')
+    })
+
+    app.get('/chat', function(req, res){
         res.sendFile(__dirname + '/chat.html')
     })
 
@@ -27,13 +25,13 @@ const configApp = () => {
 
 
 const run = (port=3000) => {
-    const server = httpServer.listen(port, function() {
-        console.log(`listening on http://localhost:${3000}`)
+    const server = httpServer.listen(port, () => {
+        console.log(`listening on http://0.0.0.0:${port}`)
     })
 }
 
 const __main = () => {
-    let port = '3000'
+    let port = '7700'
     let host = '0.0.0.0'
     configApp()
     configIO(io)

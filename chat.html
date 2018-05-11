@@ -18,12 +18,10 @@
         <div id="sidepanel" class="clearfix">
             <div id="profile">
                 <div class="wrap">
-                    <img id="profile-img" src="/user/avatar/{{user.avatar}}" class="profile-avatar" alt="" />
-                    <p>{{user.nickname}}</p>
+                    <!--<img id="profile-img" src="/user/avatar/{{user.avatar}}" class="profile-avatar" alt="" />-->
+                    <!--<p>welcome</p>-->
                 </div>
             </div>
-
-
 
             <div id="contacts">
 
@@ -31,44 +29,15 @@
 
         </div>
 
-
-
-
         <div class="content clearfix">
-
-
-
-
             <div class="content-header">
-
                 <p>Chatting Room</p>
                 <span class="chat-count" style="margin-left:15px; font-size: 13px; color: #00a699 ">0 connection</span>
             </div>
-
-
-
-
             <div class="messages " >
                 <ul class="messages-list" data-id="{{user._id}}">
-                    <!--{% for chat in chats %}-->
-                    <!--<li class="time"> {{chat.date}}</li>-->
-                    <!--{% if chat.user._id === user._id %}-->
-                    <!--<li class="sent clearfix">-->
-                        <!--{% else %}-->
-                    <!--<li class="replies clearfix">-->
-                        <!--{% endif %}-->
-                        <!--<div class="feed">-->
-                            <!--<img src="/user/avatar/{{chat.user.avatar}}" alt="" />-->
-                            <!--<span> {{chat.user.nickname}} </span>-->
-                        <!--</div>-->
-                        <!--<p class="content-detail">{{chat.content}}</p>-->
-                    <!--</li>-->
-
-                    <!--{% endfor %}-->
-
                 </ul>
             </div>
-
 
             <div class="chat-input-wrapper">
                 <textarea placeholder="Type your message" class="input-chat-content"  rows="2"></textarea>
@@ -79,10 +48,18 @@
     </div>
 </div>
 
+<!-- Insert this line above script imports  -->
+<script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+
+<!-- normal script imports etc  -->
 <script src="static/lib/jquery-3.3.1.min.js"></script>
-<script src="static/js/wd.js"></script>
-<script src="static/js/ajax.js"></script>
+<!--<script src="static/js/wd.js"></script>-->
+<!--<script src="static/js/ajax.js"></script>-->
 <script src="static/js/chat.js"></script>
+
+<!-- Insert this line after script imports -->
+<script>if (window.module) module = window.module;</script>
+
 
 
 </body>

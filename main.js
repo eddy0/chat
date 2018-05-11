@@ -8,14 +8,16 @@ let win
 
 function createWindow () {
     // 创建浏览器窗口。
-    win = new BrowserWindow({width: 700, height: 700})
+    win = new BrowserWindow({width: 650, height: 700})
 
     // 然后加载应用的 index.html。
-    win.loadURL(url.format({
-        pathname: path.join(__dirname, 'index.html'),
-        protocol: 'file:',
-        slashes: true
-    }))
+    // win.loadURL(url.format({
+    //     pathname: path.join(__dirname, 'chat.html'),
+    //     protocol: 'file:',
+    //     slashes: true
+    // }))
+
+    win.loadURL('http://localhost:3000')
 
     // 打开开发者工具。
     // win.webContents.openDevTools()

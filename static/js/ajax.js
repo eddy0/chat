@@ -15,7 +15,8 @@ remove(id)
 
 class Ajax {
     constructor() {
-        this.baseUrl = 'http://111.230.7.89'
+        this.baseUrl = 'http://localhost:3000'
+        // this.baseUrl = 'http://111.230.7.89'
     }
 
     ajaxImg({ path, data}) {
@@ -81,6 +82,21 @@ class Ajax {
             path: path,
             data: data,
             headers: headers,
+        })
+    }
+}
+
+class LoginApi extends Ajax {
+    constructor() {
+        super()
+        this.baseUrl = this.baseUrl + '/api'
+    }
+
+    signUp(data) {
+        let path = '/signup'
+        return this.post({
+            path: path,
+            data: data,
         })
     }
 }

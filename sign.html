@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/static/css/login.css">
+    <script src="/static/lib/fontawesome-all.min.js"></script>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            font-family: -apple-system, Helvetica, 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        body{
+            font: inherit;
+            color: inherit;
+            font-size: 18px;
+            background-color: #D7EFEE;
+        }
+
+        ul, li{
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        .wd-login-box{
+            box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+        }
+
+        .wd-login-box{
+            background-color: #D7EFEE;
+
+        }
+
+        .wd-login-box .wd-login-input {
+            margin: 5px auto;
+            font-size: 18px;
+        }
+
+        .wd-login-title{
+            font-size: 27px;
+            font-weight: 600;
+            color: #2e2e2e;
+            margin-bottom: 30px;
+        }
+    </style>
+    <style>
+        .prevent {
+            background: #ccc!important;
+            cursor: not-allowed !important;
+        }
+
+        button.prevent:focus {
+            background: #ccc;
+        }
+
+        button.prevent:hover {
+            background: #ccc;
+        }
+
+        .wd-password-valid.active, .wd-username-valid.active {
+            display: block!important;
+        }
+
+        .wd-popover-list {
+            border-radius: 3px;
+            position: relative;
+            z-index: 500;
+            background-color: #fff;
+
+        }
+
+        .wd-popover-list:after{
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: -14px;
+            transform: translateY(-50%)  rotate(45deg);
+            width: 10px;
+            height: 10px;
+            background-color: #fff;
+            z-index: 499;
+            box-sizing: border-box;
+            border: 0;
+         }
+
+        .wd-password-valid {
+            display: none !important;
+            position: absolute;
+            right: -151px;
+            top: 62px;
+            color: #999;
+            font-size: 13px;
+            background-color: #fff;
+            padding: 10px;
+            box-shadow: 0px 3px 9px -3px rgba(0, 0, 0, 0.4);
+        }
+
+        .wd-username-valid {
+            display: none!important;
+            position: absolute;
+            right: -151px;
+            top: -25px;
+            color: #999;
+            font-size: 13px;
+            background-color: #fff;
+            padding: 10px;
+            box-shadow: 0px 3px 9px -3px rgba(0, 0, 0, 0.4);
+        }
+        .wd-username-valid > ul, .wd-password-valid> ul {
+            text-align: left;
+        }
+
+        .wd-username-valid  ul > li, .wd-password-valid li {
+            display: flex;
+        }
+        .wd-username-valid svg, .wd-password-valid svg {
+            margin-right: 3px;
+        }
+        .wd-popover-list .item.valid svg{
+            color: #00a699;
+            fill: #00a699;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+<div class="wd-login-container alert-show">
+    <div class="wd-login-overlay"></div>
+    <div class="wd-login-box">
+        <div class="wd-login-container">
+            <div class="wd-login-title">
+               Please Enter Your Name
+            </div>
+            <form action="/signup" method="post" >
+                <div class="wd-login-inputWrapper" style="position: relative">
+                    <input class="wd-login-input login-username" name="username" type="text" placeholder="username">
+                    <span class="wd-hint wd-username-exist" style="display: block; font-size: 13px;line-height:20px; height: 20px">
+
+                    </span>
+
+                <div class="wd-username-valid">
+                <ul class="wd-popover-list">
+                    <li class="item" data-action="type">
+                        <i class="far fa-check-circle"></i>
+                        <span>只能包含字母、数字、下划线</span>
+                    </li>
+                    <li class="item" data-action="start">
+                        <i class="far fa-check-circle"></i>
+                        <span>只能字母开头</span>
+                    </li>
+                    <li class="item" data-action="end">
+                        <i class="far fa-check-circle"></i>
+                        <span>只能字母或数字结尾</span>
+                    </li>
+                    <li class="item" data-action="min">
+                        <i class="far fa-check-circle"></i>
+                        <span>最小长度3</span>
+                    </li>
+                    <li class="item" data-action="max">
+                        <i class="far fa-check-circle"></i>
+                        <span>最大长度10</span>
+                    </li>
+
+                </ul>
+                </div>
+
+            </div>
+            <div class="wd-login-btns">
+                <button class="wd-login-btn wd-alert-confirm prevent" type="submit" >Sign Up</button>
+            </div>
+            </form>
+
+        </div>
+
+    </div>
+</div>
+
+<script src="/static/js/wd.js"></script>
+<script src="/static/js/ajax.js"></script>
+<script src="/static/js/signup.js"></script>
+
+
+
+
+</body>
+</html>

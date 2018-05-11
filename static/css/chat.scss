@@ -22,6 +22,7 @@ $break-big: 900px;
     margin: 0;
     padding: 0;
     -webkit-tap-highlight-color: transparent;
+    -webkit-overflow-scrolling:touch;
 }
 
 body {
@@ -66,9 +67,11 @@ ul {
 
     #sidepanel {
         float: left;
-        min-width: 280px;
-        max-width: 340px;
-        width: 40%;
+        width: 58px;
+        min-width: 58px;
+        //min-width: 280px;
+        //max-width: 340px;
+        //width: 40%;
         height: 100%;
         background: $dark;
         color: $white;
@@ -79,9 +82,9 @@ ul {
             min-width: 58px;
         }
 
-        @media screen and (max-width:355px) {
-           display: none;
-        }
+        //@media screen and (max-width:355px) {
+        //   display: none;
+        //}
 
         #profile {
             width: 80%;
@@ -143,6 +146,7 @@ ul {
 
                 p {
                     float: left;
+                    display: none;
                     margin-left: 5px;
                     @media screen and (max-width: $break) {
                         display: none;
@@ -565,21 +569,22 @@ ul {
 
     .content {
         float: right;
-        width: 60%;
+        //width: 60%;
+        width: calc(100% - 58px);
         height: 100%;
         overflow: hidden;
         position: relative;
-        @media screen and (max-width: $break) {
-            width: calc(100% - 58px);
-            min-width: 300px !important;
-        }
-        @media screen and (min-width: $break-big) {
-            width: calc(100% - 340px);
-        }
-
-        @media screen and (max-width:355px) {
-            width: calc(100% - 10px);
-        }
+        //@media screen and (max-width: $break) {
+        //    width: calc(100% - 58px);
+        //    min-width: 300px !important;
+        //}
+        //@media screen and (min-width: $break-big) {
+        //    width: calc(100% - 340px);
+        //}
+        //
+        //@media screen and (max-width:355px) {
+        //    width: calc(100% - 10px);
+        //}
 
 
         .content-header {
@@ -714,6 +719,8 @@ ul {
                         border-radius: 20px;
                         max-width: 205px;
                         line-height: 130%;
+                        word-wrap: break-word;
+                        word-break: break-all;
                         @media screen and (min-width: $break) {
                             max-width: 300px;
                         }
@@ -863,6 +870,9 @@ ul {
     background-color: #fff;
     transition: all 0.2s;
     font-family: inherit;
+    overflow: hidden;
+    word-wrap: break-word;
+    word-break: break-all;
     @media screen and (max-width:355px) {
         width: calc(100% - 48px);
     }

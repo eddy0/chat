@@ -5,26 +5,17 @@ const fetchClients = (io) => {
 }
 
 const connectionEvent = (io, socket) => {
+    socket.on('chat', (msg) => {
+        io.emit('chat', msg)
+    })
+
+
     socket.on('disconnect', () => {
-        let count = fetchClients(io)
+        let [clients, count] = fetchClients(io)
         socket.broadcast.emit('count', count)
         console.log(socket.id)
-
-
-        // let socketId = socket.id
-        // let Chat = require('./models/chat')
-        // let u = Chat.findBy('socketId', socketId)
-        // // log('u', u)
-        // if (u !== null) {
-        //     let id = u.uid
-        //     socket.broadcast.emit('delete', id)
-        // }
-
     })
 
-    socket.on('message', (msg) => {
-        socket.broadcast.emit('message', msg)
-    })
 }
 
 const configIO = (io) => {
@@ -32,9 +23,8 @@ const configIO = (io) => {
         // all clients, clients count
         let [clients, count] = fetchClients(io)
         console.log(`total ${count} clients are connected`)
-        socket.emit('count', count)
-        socket.emit('clients', clients)
-        socket.broadcast.emit('count', count)
+        io.emit('count', count)
+        io.emit('clients', clients)
         // self
         let id = socket.id
         console.log('id', id)
