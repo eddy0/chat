@@ -12,7 +12,8 @@
   },
   "scripts": {
     "start": "pm2 start app.js",
-    "dev": "nodemon app.js"
+    "dev": "nodemon app.js",
+    "electron": "electron ."
 
   }
 }
