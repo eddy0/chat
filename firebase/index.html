@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--<script src="https://www.gstatic.com/firebasejs/5.4.1/firebase.js"></script>-->
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-app.js"></script>
+    
+    <!--<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-auth.js"></script>-->
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-database.js"></script>
+    <!--<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-firestore.js"></script>-->
+    <!--<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-messaging.js"></script>-->
+    <!--<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-functions.js"></script>-->
+    
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: 'AIzaSyBCi1InI3LebQVzRWhcAnOyOHxy-9IkL7s',
+            authDomain: 'chat-432bc.firebaseapp.com',
+            databaseURL: 'https://chat-432bc.firebaseio.com',
+            projectId: 'chat-432bc',
+            storageBucket: 'chat-432bc.appspot.com',
+            messagingSenderId: '1063660551606'
+        }
+        firebase.initializeApp(config)
+    </script>
+    <title>firebase chat</title>
+
+</head>
+<body>
+<header>header</header>
+
+<input type="text" name="text" placeholder="text">
+<button>submit</button>
+
+<script>
+    const log = console.log.bind(console)
+    const e = sel => document.querySelector(sel)
+    
+    const generateId = () => {
+        return Math.random().toString(32).substring(2) + Date.now().toString(32).substring(2)
+    }
+
+    let button = e('button')
+    const database = firebase.database()
+    console.log('firebase', database)
+
+    button.addEventListener('click', () => {
+        let input = e('input')
+        let val = input.value
+        let id = generateId()
+        let key = database.ref(`/chat/${id}`).set({
+            text: val,
+        }).then(data => console.log(data))
+        
+        log('key', key)
+
+    })
+
+</script>
+
+</body>
+</html>
