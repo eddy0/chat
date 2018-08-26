@@ -30,6 +30,11 @@
 </head>
 <body>
 <header>header</header>
+<div>
+    <ul class="content">
+    
+    </ul>
+</div>
 
 <input type="text" name="text" placeholder="text">
 <button>submit</button>
@@ -50,13 +55,39 @@
         let input = e('input')
         let val = input.value
         let id = generateId()
-        let key = database.ref(`/chat/${id}`).set({
+        database.ref(`/chat/${id}`).set({
             text: val,
-        }).then(data => console.log(data))
-        
-        log('key', key)
-
+            createdAt: Date.now()
+        })
     })
+
+</script>
+
+<script>
+
+    var listen = firebase.database().ref('chat').on('value', function(snapshot) {
+        let val = snapshot.val()
+        addContent(val)
+    });
+    
+    let addContent = (values) => {
+        let wrapper = e('.content')
+        wrapper.innerHTML = ''
+        if (!values) {
+            return
+        }
+        let list = Object.keys(values).map((id) => {
+           return {...values[id], id,}
+        }).sort((a,b) => a.createdAt - b.createdAt)
+        
+        list.forEach((item) => {
+            let t = (`
+                <li id=${item.id}>${item.text}</li>
+            `)
+            wrapper.insertAdjacentHTML('beforeend', t)
+        })
+    }
+    
 
 </script>
 
